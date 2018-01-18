@@ -14,12 +14,13 @@ class User extends BaseUser
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
 
     /**
-     * @ORM\Column(type="float",name="taille_user",nullable=tur)
+     * @ORM\Column(type="float",name="taille_user",nullable=true)
      */
     private $taille;
 
