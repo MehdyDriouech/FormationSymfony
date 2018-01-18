@@ -60,28 +60,4 @@ class User extends BaseUser
         return $this;
     }
 
-
-    /**
-     * Set banane
-     *
-     * @param float $banane
-     *
-     * @return User
-     */
-    public function setBanane($banane)
-    {
-        $this->banane = $banane;
-
-        return $this;
-    }
-
-    /**
-     * Get banane
-     *
-     * @return float
-     */
-    public function getBanane()
-    {
-        return $this->banane;
-    }
 }
