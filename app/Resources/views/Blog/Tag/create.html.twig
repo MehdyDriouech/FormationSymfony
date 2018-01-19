@@ -1,1 +1,9 @@
-test
+{{ form_start(form) }}
+
+<div class="alert alert-danger" style="background: red;">
+    {{ form_errors(form.libelle) }}
+</div>
+{{ form_label(form.libelle) }}
+{{ form_widget(form.libelle) }}
+{{ form_row(form.couleur) }}
+{{ form_end(form) }}

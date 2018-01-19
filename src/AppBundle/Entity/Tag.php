@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tag
@@ -25,6 +26,7 @@ class Tag
      * @var string
      *
      * @ORM\Column(name="libelle", type="string", length=20, unique=true)
+     * @Assert\NotBlank(message="AA")
      */
     private $libelle;
 
@@ -35,15 +37,11 @@ class Tag
      */
     private $couleur;
 
-    // ...
     /**
-     * Many tag have One article.
      * @ORM\ManyToOne(targetEntity="Article", inversedBy="tags")
      * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
      */
     private $article;
-    // ...
-
 
     /**
      * Get id
@@ -104,26 +102,19 @@ class Tag
     }
 
     /**
-     * Set article
-     *
-     * @param \AppBundle\Entity\article $article
-     *
-     * @return Tag
-     */
-    public function setArticle(\AppBundle\Entity\article $article = null)
-    {
-        $this->article = $article;
-
-        return $this;
-    }
-
-    /**
-     * Get article
-     *
-     * @return \AppBundle\Entity\article
+     * @return mixed
      */
     public function getArticle()
     {
         return $this->article;
     }
+
+    /**
+     * @param mixed $article
+     */
+    public function setArticle($article)
+    {
+        $this->article = $article;
+    }
 }
+

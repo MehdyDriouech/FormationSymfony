@@ -1,21 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Le Blog
+{% endblock %}
+
 {% block body %}
-{% for article in articles %}
-    {{article.titre}}
-    <fieldset>
-      <legend>
-          <div class="tag">
-              {% for tag in article.tags %}
-                  <span style="background: {{ tag.couleur }};">
-                      {{ tag.libelle }}
-                  </span>
-              {% endfor %}
-              <a href="{{ path('create_tag') }}">Créer un nouveau tag</a>
-          </div>
-        <p>
-          {{article.description}}
-        </p>
-      </legend>
-    </fieldset>
-{% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {{ dump(app.user) }}
+    {% for article in articles %}
+        <fieldset {% if article.actif %}class="enAvant"{% endif %}>
+            <legend>{{ article.titre | upper }} - {{ article.dateParution | date("j/m/Y H:i")}}</legend>
+            <div class="soustitre">{{ article.soustitre }}</div>
+            <div id="Tags">
+                {% for tag in article.tags %}
+                    <span style="background: {{ tag.couleur }};
+                            padding: 5px 10px;
+                            margin-right: 5px;
+                            font-size: 10px;
+                            border-radius: 10px;">
+                        {{ tag.libelle }}
+                        {% if app.user and app.user.hasRole("ROLE_ADMIN") %}
+                            <a href="{{ path("remove_tag", {"id": tag.id}) }}">X</a>
+                        {% endif %}
+                    </span>
+                {% endfor %}
+                {% if app.user and app.user.hasRole("ROLE_ADMIN") %}
+                    <a href="{{ path('create_tag') }}">Créer un nouveau tag</a>
+                {% endif %}
+            </div>
+        </fieldset>
+    {% endfor %}
     <a href="">Créer un nouvel article</a>
 {% endblock %}

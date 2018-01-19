@@ -2,8 +2,8 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Article
@@ -39,7 +39,7 @@ class Article
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateParution", type="datetimetz")
+     * @ORM\Column(name="dateParution", type="datetime")
      */
     private $dateParution;
 
@@ -53,22 +53,18 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="soustire", type="string", length=255, nullable=true)
+     * @ORM\Column(name="sousTitre", type="string", length=255, nullable=true)
      */
-    private $soustire;
+    private $sousTitre;
 
-    // ...
     /**
-    * One article has Many tag.
-    * @ORM\OneToMany(targetEntity="Tag", mappedBy="article")
-    */
+     * @ORM\OneToMany(targetEntity="Tag", mappedBy="article")
+     */
     private $tags;
-    // ...
 
     public function __construct() {
-      $this->features = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -78,6 +74,22 @@ class Article
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
     }
 
     /**
@@ -177,60 +189,48 @@ class Article
     }
 
     /**
-     * Set soustire
+     * Set sousTitre
      *
-     * @param string $soustire
+     * @param string $sousTitre
      *
      * @return Article
      */
-    public function setSoustire($soustire)
+    public function setSousTitre($sousTitre)
     {
-        $this->soustire = $soustire;
+        $this->sousTitre = $sousTitre;
 
         return $this;
     }
 
     /**
-     * Get soustire
+     * Get sousTitre
      *
      * @return string
      */
-    public function getSoustire()
+    public function getSousTitre()
     {
-        return $this->soustire;
+        return $this->sousTitre;
     }
 
     /**
-     * Add tag
-     *
-     * @param \AppBundle\Entity\Tag $tag
-     *
-     * @return Article
-     */
-    public function addTag(\AppBundle\Entity\Tag $tag)
-    {
-        $this->tags[] = $tag;
-
-        return $this;
-    }
-
-    /**
-     * Remove tag
-     *
-     * @param \AppBundle\Entity\Tag $tag
-     */
-    public function removeTag(\AppBundle\Entity\Tag $tag)
-    {
-        $this->tags->removeElement($tag);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return mixed
      */
     public function getTags()
     {
         return $this->tags;
     }
+
+    /**
+     * @param mixed $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitre();
+    }
 }
+

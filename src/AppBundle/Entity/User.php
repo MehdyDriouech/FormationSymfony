@@ -18,17 +18,12 @@ class User extends BaseUser
      */
     protected $id;
 
-
     /**
-     * @ORM\Column(type="float",name="taille_user",nullable=true)
+     * @var float
+     *
+     * @ORM\Column(type="float", name="taille_user", nullable=true)
      */
     private $taille;
-
-    /**
-     * @ORM\Column(type="float",name="banane",nullable=true)
-     */
-    private $banane;
-
 
     public function __construct()
     {
@@ -37,9 +32,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get the value of Taille
-     *
-     * @return mixed
+     * @return float
      */
     public function getTaille()
     {
@@ -47,41 +40,10 @@ class User extends BaseUser
     }
 
     /**
-     * Set the value of Taille
-     *
-     * @param mixed taille
-     *
-     * @return self
+     * @param float $taille
      */
     public function setTaille($taille)
     {
         $this->taille = $taille;
-
-        return $this;
-    }
-
-
-    /**
-     * Set banane
-     *
-     * @param float $banane
-     *
-     * @return User
-     */
-    public function setBanane($banane)
-    {
-        $this->banane = $banane;
-
-        return $this;
-    }
-
-    /**
-     * Get banane
-     *
-     * @return float
-     */
-    public function getBanane()
-    {
-        return $this->banane;
     }
 }
