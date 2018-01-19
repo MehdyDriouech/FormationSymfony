@@ -18,13 +18,13 @@ class BlogFixtures extends Fixture
       $article->setDescription("une formation qui dépote et qui apprends des choses interessantes sur symfony cliquez ici");
       $manager->persist($article);
 
-      $tag = new tag();
+      $tag = new Tag();
       $tag->setLibelle("important");
       $tag->setCouleur("#abcfgh");
       $tag->setArticle($article);
       $manager->persist($tag);
 
-      $tag = new tag();
+      $tag = new Tag();
       $tag->setLibelle("cool");
       $tag->setCouleur("#fghcab");
       $tag->setArticle($article);

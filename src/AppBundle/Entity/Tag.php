@@ -38,7 +38,7 @@ class Tag
     // ...
     /**
      * Many tag have One article.
-     * @ORM\ManyToOne(targetEntity="article", inversedBy="tags")
+     * @ORM\ManyToOne(targetEntity="Article", inversedBy="tags")
      * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
      */
     private $article;
