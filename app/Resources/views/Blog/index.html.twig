@@ -1,0 +1,21 @@
+{% block body %}
+{% for article in articles %}
+    {{article.titre}}
+    <fieldset>
+      <legend>
+          <div class="tag">
+              {% for tag in article.tags %}
+                  <span style"background: {{ tag.couleur }}">
+
+                  {{ tag.libelle }}
+                  </span>
+              {% endfor %}
+          </div>
+        <p>
+          {{article.description}}
+        </p>
+      </legend>
+    </fieldset>
+
+{% endfor %}
+{% endblock %}
