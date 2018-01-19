@@ -20,13 +20,13 @@ class BlogFixtures extends Fixture
 
       $tag = new Tag();
       $tag->setLibelle("important");
-      $tag->setCouleur("#abcfgh");
+      $tag->setCouleur("#ef3454");
       $tag->setArticle($article);
       $manager->persist($tag);
 
       $tag = new Tag();
       $tag->setLibelle("cool");
-      $tag->setCouleur("#fghcab");
+      $tag->setCouleur("#324234");
       $tag->setArticle($article);
       $manager->persist($tag);
 

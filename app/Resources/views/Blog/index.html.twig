@@ -5,9 +5,8 @@
       <legend>
           <div class="tag">
               {% for tag in article.tags %}
-                  <span style"background: {{ tag.couleur }}">
-
-                  {{ tag.libelle }}
+                  <span style="background: {{ tag.couleur }};">
+                      {{ tag.libelle }}
                   </span>
               {% endfor %}
           </div>
