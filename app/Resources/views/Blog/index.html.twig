@@ -9,12 +9,13 @@
                       {{ tag.libelle }}
                   </span>
               {% endfor %}
+              <a href="{{ path('create_tag') }}">Créer un nouveau tag</a>
           </div>
         <p>
           {{article.description}}
         </p>
       </legend>
     </fieldset>
-
 {% endfor %}
+    <a href="">Créer un nouvel article</a>
 {% endblock %}
